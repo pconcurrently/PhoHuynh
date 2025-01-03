@@ -143,8 +143,8 @@ const TokenSwap = () => {
 	if (loading) {
 		return (
 			<div className="flex items-center flex-col justify-center min-h-screen bg-gray-900 w-full">
-				<Loader size={12} color="blue-500" />
-				Loading tokens...
+				<Loader size={10} />
+				<span className="text-white">Loading tokens...</span>
 			</div>
 		);
 	}
@@ -185,7 +185,7 @@ const TokenSwap = () => {
 				>
 					{swapping ? (
 						<div className="flex items-center justify-center gap-2">
-							<Loader size={5} color="white" />
+							<Loader />
 							<span>Swapping...</span>
 						</div>
 					) : (
@@ -213,7 +213,7 @@ const TokenInput = memo(
 				<select
 					value={token.currency}
 					onChange={(e) => onTokenChange(e.target.value)}
-					className="bg-gray-600 text-white rounded px-2 py-1"
+					className="bg-gray-600 text-blue-500 rounded px-2 py-1"
 				>
 					{prices.map((price) => (
 						<option key={price.currency} value={price.currency}>
@@ -239,7 +239,7 @@ const TokenInput = memo(
 					/>
 					{loading && (
 						<div className="absolute left-0 top-1/2 -translate-y-1/2">
-							<Loader size={5} color="blue-500" />
+							<Loader />
 						</div>
 					)}
 				</div>
@@ -250,9 +250,9 @@ const TokenInput = memo(
 
 TokenInput.displayName = 'TokenInput';
 
-const Loader = ({ size = 5, color = 'blue-500' }) => (
+const Loader = ({ size = 6, color = 'blue-500' }) => (
 	<svg
-		className={`animate-spin h-${size} w-${size} text-${color}`}
+		className={`animate-spin text-${color} w-${size} h-${size}`}
 		xmlns="http://www.w3.org/2000/svg"
 		fill="none"
 		viewBox="0 0 24 24"
